@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     public float horizontalSpeed;
     public float verticalSpeed;
 
+    public int leftBound;
+    public int rightBound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +21,14 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
+
         transform.Translate(Vector3.right * horizontalInput * horizontalSpeed * Time.deltaTime);
+
+        transform.position = new Vector3(
+            Mathf.Clamp(transform.position.x, leftBound, rightBound),
+            transform.position.y,
+            transform.position.z
+        );
     }
 
     private void OnCollisionEnter(Collision other)

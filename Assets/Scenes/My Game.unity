@@ -709,6 +709,8 @@ MonoBehaviour:
   rb: {fileID: 1605188396}
   horizontalSpeed: 15
   verticalSpeed: 10
+  leftBound: -10
+  rightBound: 10
 --- !u!54 &1605188396
 Rigidbody:
   m_ObjectHideFlags: 0
