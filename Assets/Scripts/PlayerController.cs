@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb.AddForce(Vector3.up * verticalSpeed, ForceMode.Impulse);
+
     }
 
     // Update is called once per frame
@@ -19,5 +19,13 @@ public class PlayerController : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         rb.AddForce(Vector3.right * horizontalInput * horizontalSpeed);
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Platform"))
+        {
+            rb.AddForce(Vector3.up * verticalSpeed, ForceMode.Impulse);
+        }
     }
 }
