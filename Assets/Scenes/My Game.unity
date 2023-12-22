@@ -707,7 +707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1605188396}
-  horizontalSpeed: 30
+  horizontalSpeed: 15
   verticalSpeed: 10
 --- !u!54 &1605188396
 Rigidbody:

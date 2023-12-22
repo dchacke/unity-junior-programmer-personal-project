@@ -15,10 +15,10 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
-        rb.AddForce(Vector3.right * horizontalInput * horizontalSpeed);
+        transform.Translate(Vector3.right * horizontalInput * horizontalSpeed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision other)
