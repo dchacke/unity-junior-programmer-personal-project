@@ -20,10 +20,19 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Move();
+        ConstrainMovement();
+    }
+
+    private void Move()
+    {
         float horizontalInput = Input.GetAxis("Horizontal");
 
         transform.Translate(Vector3.right * horizontalInput * horizontalSpeed * Time.deltaTime);
+    }
 
+    private void ConstrainMovement()
+    {
         transform.position = new Vector3(
             Mathf.Clamp(transform.position.x, leftBound, rightBound),
             transform.position.y,
