@@ -14,6 +14,8 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
+
+        SpawnSeedPlatforms();
         InvokeRepeating("SpawnPlatform", 0, 1);
     }
 
@@ -21,6 +23,14 @@ public class SpawnManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void SpawnSeedPlatforms()
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            SpawnPlatform();
+        }
     }
 
     private void SpawnPlatform()
