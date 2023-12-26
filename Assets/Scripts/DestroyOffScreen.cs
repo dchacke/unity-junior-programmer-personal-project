@@ -17,7 +17,14 @@ public class DestroyOffScreen : MonoBehaviour
     {
         if (transform.position.y < pc.highestY - 10)
         {
-            Destroy(gameObject);
+            if (gameObject.CompareTag("Player"))
+            {
+                Debug.Log("Game over");
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
