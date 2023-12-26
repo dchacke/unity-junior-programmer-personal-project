@@ -10,11 +10,12 @@ public class PlayerController : MonoBehaviour
 
     public int leftBound;
     public int rightBound;
+    public float highestY;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        highestY = transform.position.y;
     }
 
     // Update is called once per frame
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         ConstrainMovement();
+        TrackHighestY();
     }
 
     private void Move()
@@ -38,6 +40,13 @@ public class PlayerController : MonoBehaviour
             transform.position.y,
             transform.position.z
         );
+    }
+
+    private float TrackHighestY()
+    {
+        highestY = Mathf.Max(highestY, transform.position.y);
+
+        return highestY;
     }
 
     private void OnCollisionEnter(Collision other)
