@@ -60,5 +60,9 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(other.gameObject.transform.parent.gameObject);
         }
+        else if (other.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Game over");
+        }
     }
 }
