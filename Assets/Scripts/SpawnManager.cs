@@ -28,6 +28,24 @@ public class SpawnManager : MonoBehaviour
         highestY += 3;
         int padding = 2;
         Vector3 pos = new Vector3(Random.Range(pc.leftBound + padding, pc.rightBound - padding), highestY, 0);
-        Instantiate(platformPrefab, pos, platformPrefab.transform.rotation);
+        GameObject platform = Instantiate(platformPrefab, pos, platformPrefab.transform.rotation);
+
+        if (Random.Range(0.0f, 1.0f) < 0.2)
+        {
+            SpawnEnemy(platform);
+        }
+    }
+
+    private void SpawnEnemy(GameObject platform)
+    {
+        float width = platform.GetComponent<MeshRenderer>().bounds.size.x;
+        float height = platform.GetComponent<MeshRenderer>().bounds.size.y;
+        float x = Random.Range(platform.transform.position.x - width / 2, platform.transform.position.x + width / 2);
+
+        // Why is this the correct y coordinate? Why +0.5??
+        float y = highestY + height + 0.5f;
+        Vector3 pos = new Vector3(x, y, 0);
+
+        Instantiate(enemyPrefab, pos, enemyPrefab.transform.rotation);
     }
 }
