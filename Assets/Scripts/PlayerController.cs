@@ -42,9 +42,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Platform"))
+        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Platform") || other.gameObject.CompareTag("Vulnerability"))
         {
             rb.AddForce(Vector3.up * verticalSpeed, ForceMode.Impulse);
+        }
+
+        if (other.gameObject.CompareTag("Vulnerability"))
+        {
+            Destroy(other.gameObject.transform.parent.gameObject);
         }
     }
 }
